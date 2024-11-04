@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    message = "Hello World!!"
+    message = "Hello World"
     return render_template('index.html', message = message)
 
 @app.route('/result', methods=['POST'])
@@ -54,7 +54,7 @@ def result():
     displayResult += f"\n<p>Total number of pulls: {pullCount}</p>"
     displayResult += f"\nGacha results:\n<p class='gold'>5***** Gold count: {goldCount}</p>\n<p class='purple'>4**** Purple count: {purpleCount}</p></p>\n<p class='blue'>3*** Blue count: {blueCount}</p>\n"
 
-    return render_template('result.html', displayResult = displayResult)
+    return render_template('result.html', displayResult = displayResult, pullCount = pullCount)
 
 if __name__ == '__main__':
     app.run(debug=True)

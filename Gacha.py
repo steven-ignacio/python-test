@@ -45,8 +45,9 @@ def result():
 
         if result <= 1.6 + softPityRate:
             displayResult += f"<p class='gold'> Pull {counter + 1}: 5***** Gold!!! - {result}%</p>"
-            goldPityCount = 0
             goldCount += 1
+            softPityRate = 0
+            goldPityCount = 0
         elif result <= 13:
             displayResult += f"<p class='purple'> Pull {counter + 1}: 4**** Purple - {result}%</p>"
             purplePityCount = 0

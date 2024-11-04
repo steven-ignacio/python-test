@@ -41,7 +41,7 @@ def result():
 
         # roll logic
         if goldPityCount >= 74:
-            softPityRate = (goldPityCount - 73) * 0.6
+            softPityRate = (goldPityCount - 73) * (0.6 * ((goldPityCount - 73)/2))
 
         if result <= 1.6 + softPityRate:
             displayResult += f"<p class='gold'>(SSR rate - {round(1.6 + softPityRate, 2)}%) Pull {counter + 1}: 5***** Gold!!! - {result}%</p>"

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+        *{
+            font-weight: bold;
+            font-family: sans-serif;
+            text-align: center;
+        }
+        .container{
+            width: 50%;
+            margin: auto;
+            text-align: center;
+            background-color: #ffdcba;
+            padding: 20px;
+            border-radius: 20px;
+        }
+        .white{
+            color: white;
+        }
+        .gold{
+            color: #fff000;
+        }
+        .blue{
+            color: #1f75ff;
+        }
+        .purple{
+            color: #bf58ff;
+        }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/"><button><< Back</button></a>
+    <h1>Gacha Results</h1>
+    {{ displayResult | safe }}
+  </div>
+</body>
+</html>

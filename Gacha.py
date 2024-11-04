@@ -4,8 +4,11 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    message = "Hello World!!"
-    return render_template('index.html', message = message)
+    try:
+        message = "Hello World!!"
+        return render_template('index.html', message = message)
+    except Exception as e:
+        return f"Error: {str(e)}"
 
 @app.route('/result', methods=['POST'])
 def result():

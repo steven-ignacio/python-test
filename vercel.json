@@ -1,5 +1,7 @@
 {
   "rewrites": [
     { "source": "/*", "destination": "/Gacha.py" }
-  ]
+  ],
+  "framework": "node"
 }
+

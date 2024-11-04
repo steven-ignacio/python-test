@@ -56,8 +56,8 @@ def result():
 
     return render_template('result.html', displayResult = displayResult)
 
-# if __name__ == '__main__':
-#     app.run(debug=True)
+if __name__ == '__main__':
+    app.run()
 
 # #iterator
 # counter = 0

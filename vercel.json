@@ -1,7 +1,8 @@
 {
-  "rewrites": [
-    { "source": "/*", "destination": "/Gacha.py" }
+  "builds": [
+    { "src": "Gacha.py", "use": "@vercel/python" }
   ],
-  "framework": "node"
+  "routes": [
+    { "src": "/(.*)", "dest": "Gacha.py" }
+  ]
 }
-

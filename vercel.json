@@ -4,5 +4,8 @@
   ],
   "routes": [
     { "src": "/(.*)", "dest": "Gacha.py" }
-  ]
+  ],
+  "env": {
+    "FLASK_APP": "Gacha.py"
+  }
 }

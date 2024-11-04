@@ -2,14 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/Gacha.py",
+      "src": "/Gacha.py",
       "use": "@vercel/python"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "api/Gacha.py"
+      "dest": "Gacha.py"
     }
   ]
 }

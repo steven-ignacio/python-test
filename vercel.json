@@ -1,15 +1,5 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "/Gacha.py",
-      "use": "@vercel/python"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "Gacha.py"
-    }
+  "rewrites": [
+    { "source": "/*", "destination": "/index.py" }
   ]
 }

@@ -15,6 +15,7 @@ def result():
     # pity  counters
     goldPityCount = 0
     purplePityCount = 0
+    softPityRate = 0
 
     # pull counters
     goldCount = 0
@@ -35,17 +36,21 @@ def result():
         if goldPityCount == 89: result = 1.6
 
         # roll logic
-        if result <= 1.6:
-            displayResult += f"<p class='gold'> Pull {counter + 1}: 5***** Gold!!! - {result}%</p>"
-            goldPityCount = 0
+        if goldPityCount >= 74:
+            softPityRate = (goldPityCount - 73) * 0.6
+
+        if result <= 1.6 + softPityRate:
+            displayResult += f"<p class='gold'>(SSR rate - {round(1.6 + softPityRate, 2)}%) Pull {counter + 1}: 5***** Gold!!! - {result}%</p>"
             goldCount += 1
+            softPityRate = 0
+            goldPityCount = 0
         elif result <= 13:
-            displayResult += f"<p class='purple'> Pull {counter + 1}: 4**** Purple - {result}%</p>"
+            displayResult += f"<p class='purple'>(SSR rate - {round(1.6 + softPityRate, 2)}%) Pull {counter + 1}: 4**** Purple - {result}%</p>"
             purplePityCount = 0
             goldPityCount += 1
             purpleCount += 1
         else:
-            displayResult += f"<p class='blue'> Pull {counter + 1}: 3*** Blue - {result}%</p>"
+            displayResult += f"<p class='blue'>(SSR rate - {round(1.6 + softPityRate, 2)}%) Pull {counter + 1}: 3*** Blue - {result}%</p>"
             goldPityCount += 1
             purplePityCount += 1
             blueCount += 1

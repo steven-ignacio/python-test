@@ -56,7 +56,7 @@ def result():
 
     return render_template('result.html', displayResult = displayResult)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run()
 
 # #iterator

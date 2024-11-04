@@ -12,7 +12,7 @@ def result():
     # iterator
     counter = 0
 
-    # pity counters
+    # pity  counters
     goldPityCount = 0
     purplePityCount = 0
 

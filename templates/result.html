@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title></title>
-  <style>
+    <meta charset="UTF-8">
+    <title>Gacha Result</title>
+    <style>
         body{
             background-color: #b5b5b5
         }
@@ -37,13 +37,15 @@
             border-radius: 15px;
             background-color: #bf58ff;
         }
-  </style>
+    </style>
 </head>
 <body>
-  <div class="container">
-    <a href="/"><button><< Back</button></a>
+<div class="container">
+    <a href="/">
+        <button><< Back</button>
+    </a>
     <h1>Gacha Results - {{pullCount}} Tickets</h1>
     {{ displayResult | safe }}
-  </div>
+</div>
 </body>
 </html>

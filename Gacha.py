@@ -39,7 +39,7 @@ def result():
         if purplePityCount == 9: result = 13
         if goldPityCount == 89: result = 1.6
 
-        # roll logic
+        # soft pity logic
         if goldPityCount >= 74:
             softPityRate = (goldPityCount - 73) * (0.6 * ((goldPityCount - 73)/2))
 

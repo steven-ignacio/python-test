@@ -1,5 +1,8 @@
 import random
+import math
 from flask import Flask, render_template, request
+from formula import start_attempt
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -17,6 +20,11 @@ def result():
     purplePityCount = 0
     softPityRate = 0
 
+    # variables for the soft pity calculation
+    base_rate = 1.6
+    start_attempt = 74
+    max_attempt = 90
+
     # pull counters
     goldCount = 0
     purpleCount = 0
@@ -24,6 +32,18 @@ def result():
     displayResult = ""
 
     pullCount = int(request.form['number'])
+
+    def logistic_drop_rate(base_rate, start_attempt, steepness, max_attempt):
+        L = 1.0  # Maximum drop rate (100%)
+        k = steepness  # Controls the steepness of the curve
+        n0 = (max_attempt + start_attempt) / 2  # Midpoint
+
+        # Calculate drop rate using the logistic function
+        drop_rate = L / (1 + math.exp(-k * (attempt - n0)))
+
+        # Adjust drop rate based on base rate at the start attempt
+        adjusted_rate = drop_rate - (L - 1.6) / (1 + math.exp(-k * (start_attempt - n0)))
+        # return max(adjusted_rate, 1.6)
 
     while counter < pullCount:
         result = round(float(random.random() * 100), 2)
@@ -37,7 +57,11 @@ def result():
 
         # roll logic
         if goldPityCount >= 74:
-            softPityRate = (goldPityCount - 73) * (0.6 * ((goldPityCount - 73)/2))
+            # for attempt in range(goldPityCount, max_attempt + 1):
+            #     softPityRate = logistic_drop_rate(base_rate, start_attempt, 1.2, max_attempt)
+            # start_attempt += 1
+            softPityRate = (goldPityCount - 73) * ((17-(90-goldPityCount)) * 6.25)
+            # softPityRate = (goldPityCount - 73) * (0.6 * ((goldPityCount - 73)/2))
 
         if result <= 1.6 + softPityRate:
             displayResult += f"<p class='gold'>(SSR rate - {round(1.6 + softPityRate, 2)}%) Pull {counter + 1}: 5***** Gold!!! - {result}%</p>"
@@ -60,6 +84,7 @@ def result():
     displayResult += f"\nGacha results:\n<p class='gold'>5***** Gold count: {goldCount}</p>\n<p class='purple'>4**** Purple count: {purpleCount}</p></p>\n<p class='blue'>3*** Blue count: {blueCount}</p>\n"
 
     return render_template('result.html', displayResult = displayResult, pullCount = pullCount)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
